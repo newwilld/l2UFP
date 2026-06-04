@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lineage II UFP - Ultimate Fight PVP</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Cinzel for headings, Inter for text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Config for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        l2: {
+                            gold: '#d4af37',
+                            goldDark: '#aa8c2c',
+                            red: '#8b0000',
+                            redLight: '#ff4500',
+                            dark: '#0f0f11',
+                            darker: '#0a0a0c',
+                            panel: '#1a1a1f'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "url('https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=2070&auto=format&fit=crop')", // Dark fire/castle theme placeholder
+                        'panel-texture': "linear-gradient(to bottom, rgba(26,26,31,0.95), rgba(15,15,17,0.98))"
+                    },
+                    boxShadow: {
+                        'glow-gold': '0 0 15px rgba(212, 175, 55, 0.5)',
+                        'glow-red': '0 0 25px rgba(255, 69, 0, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0a0a0c;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* Gold text gradient */
+        .text-gradient-gold {
+            background: linear-gradient(to bottom, #fff8dc, #d4af37, #b8860b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        /* Hero Image overlay for darkening */
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(10,10,12,0.2) 0%, rgba(10,10,12,0.8) 60%, rgba(10,10,12,1) 100%);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Glow Pulse Animation */
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+            50% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+        }
+        .btn-glow {
+            animation: glowPulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+        .btn-glow:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.8);
+        }
+
+        /* Feature Card Style */
+        .feature-card {
+            background: linear-gradient(145deg, #1f1f25, #111114);
+            border: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+        /* Fancy border accents for cards */
+        .feature-card::before, .feature-card::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .feature-card::before {
+            top: 0; left: 0;
+            border-top-color: #d4af37;
+            border-left-color: #d4af37;
+            opacity: 0.5;
+        }
+        .feature-card::after {
+            bottom: 0; right: 0;
+            border-bottom-color: #d4af37;
+            border-right-color: #d4af37;
+            opacity: 0.5;
+        }
+        .feature-card:hover::before, .feature-card:hover::after {
+            width: 40px; height: 40px; opacity: 1;
+        }
+
+        /* Particles Container */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Logo Drop Shadow to stand out from background */
+        .logo-shadow {
+            filter: drop-shadow(0 0 20px rgba(255, 69, 0, 0.4));
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37; 
+        }
+    </style>
+</head>
+<body class="antialiased relative">
+
+    <!-- Particles Library for Fire/Ember effects -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="absolute inset-0 bg-l2-darker/80 backdrop-blur-md border-b border-white/5 shadow-lg"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <!-- Smaller logo for navbar -->
+                    <img class="h-12 w-auto" src="https://i.ibb.co/VY2wcBRR/LOGO-UFP.png" alt="L2 UFP Logo">
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-gray-300 hover:text-l2-gold px-3 py-2 rounded-md text-sm font-heading font-bold uppercase tracking-wider transition-colors duration-200">Início</a>
+                        <a href="#features" class="text-gray-300 hover:text-l2-gold px-3 py-2 rounded-md text-sm font-heading font-bold uppercase tracking-wider transition-colors duration-200">Informações</a>
+                        <a href="#rates" class="text-gray-300 hover:text-l2-gold px-3 py-2 rounded-md text-sm font-heading font-bold uppercase tracking-wider transition-colors duration-200">Rates</a>
+                        <a href="#account" class="text-gray-300 hover:text-l2-gold px-3 py-2 rounded-md text-sm font-heading font-bold uppercase tracking-wider transition-colors duration-200">Criar Conta</a>
+                        <a href="#download" class="bg-gradient-to-r from-l2-red to-l2-redLight text-white px-5 py-2 rounded font-heading font-bold uppercase tracking-wider hover:shadow-glow-red transition-all duration-300 transform hover:-translate-y-1">Jogue Agora</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden relative z-50">
+                    <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                        <span class="sr-only">Abrir menu principal</span>
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden absolute w-full bg-l2-darker border-b border-gray-800 shadow-xl" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+                <a href="#home" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-l2-gold block px-3 py-3 rounded-md text-base font-heading font-bold uppercase">Início</a>
+                <a href="#features" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-l2-gold block px-3 py-3 rounded-md text-base font-heading font-bold uppercase">Informações</a>
+                <a href="#rates" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-l2-gold block px-3 py-3 rounded-md text-base font-heading font-bold uppercase">Rates</a>
+                <a href="#account" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-l2-gold block px-3 py-3 rounded-md text-base font-heading font-bold uppercase">Criar Conta</a>
+                <a href="#download" onclick="toggleMobileMenu()" class="bg-l2-red text-white block px-3 py-3 mt-4 rounded-md text-base font-heading font-bold uppercase">Jogue Agora</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-black">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <!-- Emulating a dark, fiery battlefield background -->
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1540824982633-875c74eb5868?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-30"></div>
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+        
+        <!-- Embers Particles -->
+        <div id="particles-js"></div>
+
+        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 flex flex-col items-center mt-10">
+            <!-- Main Logo -->
+            <img src="https://i.ibb.co/VY2wcBRR/LOGO-UFP.png" alt="Lineage II UFP" class="w-full max-w-lg md:max-w-2xl lg:max-w-3xl mb-4 animate-float logo-shadow">
+            
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-black mb-2 tracking-widest text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
+                ULTIMATE FIGHT PVP
+            </h1>
+            
+            <div class="flex items-center justify-center mb-10 w-full max-w-md mx-auto opacity-90 relative">
+                <!-- White glow effect behind the subtitle -->
+                <div class="absolute inset-0 bg-white/10 blur-xl rounded-full"></div>
+                <div class="absolute inset-0 bg-white/5 blur-md rounded-full"></div>
+                
+                <div class="h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent flex-grow z-10"></div>
+                <p class="px-4 text-white font-heading text-sm md:text-base uppercase tracking-[0.2em] font-bold z-10 drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">O Clássico que nunca morre</p>
+                <div class="h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent flex-grow z-10"></div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-6 mt-8 justify-center w-full max-w-2xl" id="download">
+                <a href="#" class="group relative inline-flex items-center justify-center px-8 py-4 font-heading font-bold text-white uppercase tracking-wider bg-gradient-to-br from-l2-red to-red-900 border border-red-500 rounded overflow-hidden btn-glow w-full sm:w-auto">
+                    <span class="absolute inset-0 w-full h-full bg-white/10 group-hover:bg-transparent transition-colors"></span>
+                    <i class="fas fa-download mr-3 text-xl"></i>
+                    <div class="flex flex-col text-left">
+                        <span class="text-xs text-red-200">Cliente Interlude</span>
+                        <span class="text-lg leading-none mt-1">Download Jogo</span>
+                    </div>
+                </a>
+
+                <a href="#" class="group relative inline-flex items-center justify-center px-8 py-4 font-heading font-bold text-l2-gold uppercase tracking-wider bg-transparent border border-l2-gold rounded overflow-hidden transition-all duration-300 hover:bg-l2-gold hover:text-black w-full sm:w-auto">
+                    <span class="absolute inset-0 w-full h-full bg-l2-gold/5 group-hover:bg-transparent transition-colors"></span>
+                    <i class="fas fa-file-zipper mr-3 text-xl"></i>
+                    <div class="flex flex-col text-left">
+                        <span class="text-xs opacity-70 group-hover:text-black">Apenas Update</span>
+                        <span class="text-lg leading-none mt-1">Baixar Patch</span>
+                    </div>
+                </a>
+            </div>
+            
+            <p class="mt-12 text-sm text-gray-500 font-sans tracking-wide">Venha viver a verdadeira experiência Lineage II</p>
+            <a href="#features" class="mt-4 text-l2-gold animate-bounce block">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section (Baseado na imagem) -->
+    <section id="features" class="py-24 relative bg-l2-dark border-t border-white/5">
+        <!-- Decoration -->
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-l2-gold/30 to-transparent"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-gradient-gold inline-block">Sistemas Exclusivos</h2>
+                <div class="w-24 h-1 bg-l2-red mx-auto mt-4 rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Feature 1 -->
+                <div class="feature-card p-6 rounded-lg flex items-center gap-6">
+                    <div class="w-16 h-16 rounded-full bg-black border border-l2-gold/30 flex items-center justify-center flex-shrink-0 shadow-glow-gold">
+                        <i class="fas fa-scale-balanced text-3xl text-l2-gold"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-heading font-bold text-white mb-1 uppercase tracking-wide">PVP Super Balanceado</h3>
+                        <p class="text-gray-400 font-sans text-sm">Equilíbrio perfeito de Classes para lutas justas.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card p-6 rounded-lg flex items-center gap-6">
+                    <div class="w-16 h-16 rounded-full bg-black border border-l2-gold/30 flex items-center justify-center flex-shrink-0 shadow-glow-gold">
+                        <i class="fas fa-trophy text-3xl text-l2-gold"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-heading font-bold text-white mb-1 uppercase tracking-wide">Ranking PVP Semanal</h3>
+                        <p class="text-l2-gold font-sans font-semibold text-sm">Com prêmio de R$ 50 a R$ 100 em PIX.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card p-6 rounded-lg flex items-center gap-6">
+                    <div class="w-16 h-16 rounded-full bg-black border border-l2-gold/30 flex items-center justify-center flex-shrink-0 shadow-glow-gold">
+                        <i class="fab fa-fort-awesome text-3xl text-gray-300"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-heading font-bold text-white mb-1 uppercase tracking-wide">Siege Giran</h3>
+                        <p class="text-l2-gold font-sans font-semibold text-sm">Domine o castelo e garanta prêmio de R$ 100.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card p-6 rounded-lg flex items-center gap-6">
+                    <div class="w-16 h-16 rounded-full bg-black border border-l2-gold/30 flex items-center justify-center flex-shrink-0 shadow-glow-gold">
+                        <i class="fas fa-khanda text-3xl text-gray-300"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-heading font-bold text-white mb-1 uppercase tracking-wide">Torneios GvG</h3>
+                        <p class="text-gray-400 font-sans text-sm">Batalhas Group vs Group <span class="text-l2-gold font-semibold">valendo R$</span>.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card p-6 rounded-lg flex items-center gap-6">
+                    <div class="w-16 h-16 rounded-full bg-black border border-l2-gold/30 flex items-center justify-center flex-shrink-0 shadow-glow-red">
+                        <i class="fas fa-skull text-3xl text-l2-redLight"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-heading font-bold text-l2-redLight mb-1 uppercase tracking-wide">PK Drop Liberado</h3>
+                        <p class="text-gray-400 font-sans text-sm">Risco e recompensa. O clássico hardcore.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card p-6 rounded-lg flex items-center gap-6">
+                    <div class="w-16 h-16 rounded-full bg-black border border-l2-gold/30 flex items-center justify-center flex-shrink-0 shadow-glow-gold">
+                        <i class="fas fa-video text-3xl text-l2-gold"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-heading font-bold text-white mb-1 uppercase tracking-wide">Edição de Vídeos</h3>
+                        <p class="text-gray-400 font-sans text-sm">Para YouTube, mostrando os Melhores Players.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Rates Section -->
+    <section id="rates" class="py-20 relative bg-l2-darker border-y border-white/5 overflow-hidden">
+        <!-- Decorative Background Circle -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-l2-red/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-12 uppercase tracking-widest">
+                <i class="fas fa-fire mr-3 text-l2-redLight"></i> Servidor Status
+            </h2>
+
+            <div class="bg-gradient-to-b from-gray-900 to-black border border-l2-gold/20 p-8 md:p-12 rounded-xl shadow-2xl relative">
+                <!-- Top corner decorations -->
+                <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-l2-gold rounded-tl-xl opacity-50"></div>
+                <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-l2-gold rounded-tr-xl opacity-50"></div>
+                <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-l2-gold rounded-bl-xl opacity-50"></div>
+                <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-l2-gold rounded-br-xl opacity-50"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                    <div class="flex flex-col items-center justify-center p-4 bg-black/50 rounded-lg border border-white/5">
+                        <span class="text-gray-400 font-sans text-sm uppercase tracking-widest mb-2">Experiência (EXP)</span>
+                        <span class="text-4xl font-heading font-bold text-gradient-gold">500x</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-4 bg-black/50 rounded-lg border border-white/5">
+                        <span class="text-gray-400 font-sans text-sm uppercase tracking-widest mb-2">Skill Points (SP)</span>
+                        <span class="text-4xl font-heading font-bold text-gradient-gold">500x</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-4 bg-black/50 rounded-lg border border-white/5">
+                        <span class="text-gray-400 font-sans text-sm uppercase tracking-widest mb-2">Drop Adena</span>
+                        <span class="text-4xl font-heading font-bold text-gradient-gold">500x</span>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-gray-800">
+                    <p class="text-2xl font-heading font-bold text-white tracking-widest">
+                        <span class="text-l2-redLight">SoB</span> NOVA DIREÇÃO
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Account Creation Info -->
+    <section id="account" class="py-24 relative bg-l2-dark bg-panel-texture">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <div class="mb-8 inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-l2-goldDark to-black border border-l2-gold/50 shadow-glow-gold">
+                <i class="fas fa-user-shield text-4xl text-white"></i>
+            </div>
+            
+            <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-6">Criação de Conta</h2>
+            
+            <div class="bg-black/60 border border-gray-800 p-8 rounded-lg backdrop-blur-sm relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-l2-gold to-transparent"></div>
+                
+                <p class="text-xl md:text-2xl font-sans text-gray-300 leading-relaxed mb-6">
+                    A praticidade que você precisa para ir direto para a batalha.
+                </p>
+                
+                <div class="bg-l2-darker p-6 rounded-md border border-l2-red/30 inline-block">
+                    <p class="text-2xl font-heading font-bold text-gradient-gold uppercase tracking-widest">
+                        Auto-Create Ativado
+                    </p>
+                    <p class="text-gray-400 mt-2 font-sans">
+                        Sua conta é criada automaticamente <strong class="text-white">dentro do jogo</strong> no seu primeiro login.<br>
+                        Apenas digite seu Login e Senha desejados no cliente e pronto!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-10 border-t border-white/10 text-center relative z-20">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
+            <img class="h-12 w-auto mb-6 opacity-50 grayscale hover:grayscale-0 transition-all duration-300" src="https://i.ibb.co/VY2wcBRR/LOGO-UFP.png" alt="L2 UFP Logo">
+            
+            <p class="text-gray-500 font-sans text-sm mb-4">
+                &copy; 2024 Lineage II UFP - Ultimate Fight PVP. Todos os direitos reservados.
+            </p>
+            <p class="text-gray-700 text-xs max-w-2xl mx-auto">
+                Lineage II é uma marca registrada da NCsoft Corporation. Este servidor é um projeto privado focado em entretenimento e não possui afiliação oficial.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript para Interatividade e Efeitos -->
+    <script>
+        // Navbar scroll effect (darken on scroll)
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-black/95');
+                nav.classList.remove('bg-transparent');
+            } else {
+                nav.classList.add('bg-transparent');
+                nav.classList.remove('bg-black/95');
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Initialize Particles.js (Fire/Embers effect)
+        // Ensure this runs only if particlesJS is loaded
+        if (typeof particlesJS !== 'undefined') {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 60, // Number of embers
+                        "density": { "enable": true, "value_area": 800 }
+                    },
+                    "color": {
+                        "value": ["#ff4500", "#d4af37", "#ff8c00"] // Red, Gold, Orange
+                    },
+                    "shape": {
+                        "type": "circle",
+                    },
+                    "opacity": {
+                        "value": 0.8,
+                        "random": true,
+                        "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": { "enable": true, "speed": 2, "size_min": 0.1, "sync": false }
+                    },
+                    "line_linked": {
+                        "enable": false // Embers don't connect
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 1.5,
+                        "direction": "top", // Embers float up
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": { "enable": false },
+                        "onclick": { "enable": false },
+                        "resize": true
+                    }
+                },
+                "retina_detect": true
+            });
+        }
+    </script>
+</body>
+</html>
