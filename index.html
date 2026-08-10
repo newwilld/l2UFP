@@ -83,7 +83,8 @@
             flex-shrink: 0;
             width: 100%;
             height: auto;
-            object-fit: cover;
+            object-fit: contain;
+            max-height: 400px;
         }
 
         .slider-dot {
@@ -94,6 +95,7 @@
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
+            padding: 0;
         }
 
         .slider-dot.active {
@@ -119,6 +121,7 @@
             transition: all 0.3s ease;
             z-index: 10;
             backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
 
         .slider-arrow:hover {
@@ -135,6 +138,9 @@
             .slider-arrow {
                 width: 32px;
                 height: 32px;
+            }
+            .slider-track img {
+                max-height: 300px;
             }
         }
     </style>
@@ -166,9 +172,23 @@
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-400">Profissional.</span>
                 </h1>
                 
-                <!-- Hero Image Slider abaixo do título -->
+                <!-- Hero Image fixa abaixo do título -->
                 <div class="mb-8 max-w-2xl mx-auto lg:mx-0">
-                    <div id="hero-slider" class="slider-container rounded-2xl shadow-2xl border border-white/10">
+                    <img 
+                        src="https://raw.githubusercontent.com/newwilld/l2UFP/refs/heads/main/WA%20CRIA%C3%87%C3%83O%20DE%20SITE%20PROFISSIONAL%20(21).webp" 
+                        alt="Criação de Sites Profissionais" 
+                        class="w-full h-auto rounded-2xl shadow-2xl border border-white/10 object-cover"
+                        loading="eager"
+                    >
+                </div>
+                
+                <p class="text-base sm:text-xl text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                  Entregamos seu site pronto em <strong class="text-white font-bold">7 dias</strong>, com assessoria, anúncios, atualizações e suporte incluso. 
+                </p>
+
+                <!-- Slider abaixo do parágrafo descritivo -->
+                <div class="mb-8 max-w-2xl mx-auto lg:mx-0">
+                    <div id="hero-slider" class="slider-container rounded-2xl shadow-2xl border border-white/10 bg-black/20">
                         <!-- Slider Track -->
                         <div id="slider-track" class="slider-track">
                             <!-- As imagens serão inseridas via JavaScript -->
@@ -190,10 +210,6 @@
                         <div id="slider-dots" class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-2 z-10"></div>
                     </div>
                 </div>
-                
-                <p class="text-base sm:text-xl text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-                  Entregamos seu site pronto em <strong class="text-white font-bold">7 dias</strong>, com assessoria, anúncios, atualizações e suporte incluso. 
-                </p>
 
                 <!-- Features Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-left mx-auto lg:mx-0 max-w-2xl w-full">
@@ -392,7 +408,6 @@
             'https://raw.githubusercontent.com/newwilld/l2UFP/refs/heads/main/WA%20CRIA%C3%87%C3%83O%20DE%20SITE%20PROFISSIONAL%20(8).webp',
             'https://raw.githubusercontent.com/newwilld/l2UFP/refs/heads/main/WA%20CRIA%C3%87%C3%83O%20DE%20SITE%20PROFISSIONAL%20(9).webp',
             'https://raw.githubusercontent.com/newwilld/l2UFP/refs/heads/main/WA%20CRIA%C3%87%C3%83O%20DE%20SITE%20PROFISSIONAL%20(15).webp',
-            'https://raw.githubusercontent.com/newwilld/l2UFP/refs/heads/main/WA%20CRIA%C3%87%C3%83O%20DE%20SITE%20PROFISSIONAL%20(21).webp',
             'https://raw.githubusercontent.com/newwilld/l2UFP/refs/heads/main/WA%20CRIA%C3%87%C3%83O%20DE%20SITE%20PROFISSIONAL%20(20).webp',
             'https://raw.githubusercontent.com/newwilld/l2UFP/refs/heads/main/WA%20CRIA%C3%87%C3%83O%20DE%20SITE%20PROFISSIONAL%20(19).webp'
         ];
@@ -409,7 +424,9 @@
             const img = document.createElement('img');
             img.src = src;
             img.alt = `Criação de Site Profissional ${index + 1}`;
-            img.loading = index === 0 ? 'eager' : 'lazy';
+            img.loading = 'lazy';
+            img.style.width = '100%';
+            img.style.flexShrink = '0';
             track.appendChild(img);
 
             // Criar dots
@@ -428,10 +445,6 @@
             document.querySelectorAll('.slider-dot').forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentSlide);
             });
-
-            // Atualizar botões
-            prevBtn.disabled = currentSlide === 0;
-            nextBtn.disabled = currentSlide === sliderImages.length - 1;
         }
 
         function goToSlide(index) {
@@ -475,12 +488,12 @@
 
         track.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
-        });
+        }, { passive: true });
 
         track.addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].screenX;
             handleSwipe();
-        });
+        }, { passive: true });
 
         function handleSwipe() {
             const swipeThreshold = 50;
