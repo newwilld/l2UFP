@@ -76,171 +76,206 @@
     <div class="fixed bottom-[-5%] right-[-5%] w-[30%] h-[30%] rounded-full bg-red-500/5 blur-[100px] pointer-events-none -z-10"></div>
 
     <!-- Main Container Layout -->
-    <main class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 lg:py-20 flex-1 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16">
+    <main class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 lg:py-20 flex-1 flex flex-col gap-10 lg:gap-16">
         
-        <!-- Left Column: Copy & Value Proposition -->
-        <div class="w-full lg:w-7/12 flex flex-col justify-center text-center lg:text-left z-10">
-            
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs sm:text-sm font-semibold tracking-wide w-max mx-auto lg:mx-0 mb-6 shadow-sm">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
-                </span>
-                Vagas Limitadas para este Mês
+        <!-- Hero Section with Image -->
+        <div class="w-full flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16">
+            <!-- Left Column: Copy & Value Proposition -->
+            <div class="w-full lg:w-7/12 flex flex-col justify-center text-center lg:text-left z-10">
+                
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs sm:text-sm font-semibold tracking-wide w-max mx-auto lg:mx-0 mb-6 shadow-sm">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                    </span>
+                    Vagas Limitadas para este Mês
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.15] mb-6">
+                    Tenha um site<br class="hidden sm:block" />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-400">Profissional.</span>
+                </h1>
+                
+                <!-- Hero Image abaixo do título -->
+                <div class="mb-8 max-w-2xl mx-auto lg:mx-0">
+                    <img 
+                        src="https://raw.githubusercontent.com/newwilld/l2UFP/refs/heads/main/criacao-de-sites-profissionais-em-aracaju%203.webp" 
+                        alt="Criação de Sites Profissionais" 
+                        class="w-full h-auto rounded-2xl shadow-2xl border border-white/10 object-cover"
+                        loading="lazy"
+                    >
+                </div>
+                
+                <p class="text-base sm:text-xl text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                  Entregamos seu site pronto em <strong class="text-white font-bold">7 dias</strong>, com assessoria, anúncios, atualizações e suporte incluso. 
+                </p>
+
+                <!-- Features Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-left mx-auto lg:mx-0 max-w-2xl w-full">
+                    <!-- Feature 1 -->
+                    <div class="flex items-start p-4 rounded-2xl bg-white/5 border border-white/10 shadow-sm backdrop-blur-sm">
+                        <div class="flex-shrink-0 mt-0.5">
+                            <div class="w-9 h-9 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400 border border-red-500/20">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                        </div>
+                        <div class="ml-3.5">
+                            <h3 class="text-white font-bold text-base">Site Profissional</h3>
+                            <p class="mt-0.5 text-slate-400 text-xs sm:text-sm">Rápido e Moderno.</p>
+                        </div>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="flex items-start p-4 rounded-2xl bg-white/5 border border-white/10 shadow-sm backdrop-blur-sm">
+                        <div class="flex-shrink-0 mt-0.5">
+                            <div class="w-9 h-9 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400 border border-red-500/20">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            </div>
+                        </div>
+                        <div class="ml-3.5">
+                            <h3 class="text-white font-bold text-base">Assessoria</h3>
+                            <p class="mt-0.5 text-slate-400 text-xs sm:text-sm">Envie pedidos no sistema e receba atualizações realizadas.</p>
+                        </div>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="flex items-start p-4 rounded-2xl bg-white/5 border border-white/10 shadow-sm backdrop-blur-sm">
+                        <div class="flex-shrink-0 mt-0.5">
+                            <div class="w-9 h-9 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400 border border-red-500/20">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                            </div>
+                        </div>
+                        <div class="ml-3.5">
+                            <h3 class="text-white font-bold text-base">Anúncios</h3>
+                            <p class="mt-0.5 text-slate-400 text-xs sm:text-sm">Imagens e Vídeos focadas em atrair clientes.</p>
+                        </div>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div class="flex items-start p-4 rounded-2xl bg-white/5 border border-white/10 shadow-sm backdrop-blur-sm">
+                        <div class="flex-shrink-0 mt-0.5">
+                            <div class="w-9 h-9 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400 border border-red-500/20">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636l3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            </div>
+                        </div>
+                        <div class="ml-3.5">
+                            <h3 class="text-white font-bold text-base">Atualizações Mensais</h3>
+                            <p class="mt-0.5 text-slate-400 text-xs sm:text-sm">Conteúdo Sempre Atualizado.</p>
+                        </div>
+                    </div>
+                    <!-- Feature 5 -->
+                    <div class="flex items-start p-4 rounded-2xl bg-white/5 border border-white/10 shadow-sm backdrop-blur-sm">
+                        <div class="flex-shrink-0 mt-0.5">
+                            <div class="w-9 h-9 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400 border border-red-500/20">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636l3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            </div>
+                        </div>
+                        <div class="ml-3.5">
+                            <h3 class="text-white font-bold text-base">Suporte Dedicado</h3>
+                            <p class="mt-0.5 text-slate-400 text-xs sm:text-sm">Atendimento ágil.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.15] mb-6">
-                Tenha um site<br class="hidden sm:block" />
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-400">Profissional.</span>
-            </h1>
-            
-            <p class="text-base sm:text-xl text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-              Entregamos seu site pronto em <strong class="text-white font-bold">7 dias</strong>, com assessoria, anúncios, atualizações e suporte incluso. 
-            </p>
+            <!-- Right Column: Pricing Card (Invertido - Agora Claro) -->
+            <div class="w-full lg:w-5/12 max-w-md mx-auto">
+                
+                <div class="relative bg-white rounded-[2.5rem] p-6 sm:p-8 shadow-2xl border border-red-500/40 text-slate-900 transform transition-all duration-300 hover:shadow-red-500/20">
+                    
+                    <!-- Glowing red accent edge -->
+                    <div class="absolute inset-x-0 -top-px h-1 w-full bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-t-[2.5rem]"></div>
 
-            <!-- Features Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-left mx-auto lg:mx-0 max-w-2xl w-full">
-                <!-- Feature 1 -->
-                <div class="flex items-start p-4 rounded-2xl bg-white/5 border border-white/10 shadow-sm backdrop-blur-sm">
-                    <div class="flex-shrink-0 mt-0.5">
-                        <div class="w-9 h-9 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400 border border-red-500/20">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <h2 class="text-xl sm:text-2xl font-bold tracking-tight">Plano Completo</h2>
+                            <p class="text-slate-500 text-xs sm:text-sm mt-0.5">Tudo o que sua empresa exige.</p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 text-red-600 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider">
+                            Oferta Especial
                         </div>
                     </div>
-                    <div class="ml-3.5">
-                        <h3 class="text-white font-bold text-base">Site Profissional</h3>
-                        <p class="mt-0.5 text-slate-400 text-xs sm:text-sm">Rápido e Moderno.</p>
+
+                    <!-- Price Box -->
+                    <div class="mb-6 pb-6 border-b border-slate-200 flex items-baseline">
+                        <span class="text-2xl sm:text-3xl font-semibold text-slate-500 mr-1.5">R$</span>
+                        <span class="text-5xl sm:text-6xl font-black tracking-tighter text-slate-900">180</span>
+                        <span class="text-lg sm:text-xl text-slate-500 font-medium ml-2">/mês</span>
                     </div>
+
+                    <!-- Checklist -->
+                    <ul class="space-y-3.5 mb-8 text-sm sm:text-base">
+                        <li class="flex items-center text-slate-700">
+                            <div class="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center mr-3 flex-shrink-0 border border-red-200">
+                                <svg class="w-3.5 h-3.5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            Site Profissional pronto em 7 dias
+                        </li>
+                        <li class="flex items-center text-slate-700">
+                            <div class="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center mr-3 flex-shrink-0 border border-red-200">
+                                <svg class="w-3.5 h-3.5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            Assessoria Mensal
+                        </li>
+                        <li class="flex items-center text-slate-700">
+                            <div class="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center mr-3 flex-shrink-0 border border-red-200">
+                                <svg class="w-3.5 h-3.5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            Anúncios
+                        </li>
+                          <li class="flex items-center text-slate-700">
+                            <div class="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center mr-3 flex-shrink-0 border border-red-200">
+                                <svg class="w-3.5 h-3.5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            Atualizações
+                        </li>
+                          <li class="flex items-center text-slate-700">
+                            <div class="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center mr-3 flex-shrink-0 border border-red-200">
+                                <svg class="w-3.5 h-3.5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            Suporte Dedicado
+                        </li>
+                        <li class="flex items-center text-slate-700">
+                            <div class="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center mr-3 flex-shrink-0 border border-red-200">
+                                <svg class="w-3.5 h-3.5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                           Sem taxas escondidas / sem contrato de fidelidade
+                        </li>
+                    </ul>
+
+                    <!-- CTA Button -->
+                    <button onclick="handleCheckout()" class="group relative w-full flex items-center justify-center gap-3 bg-red-600 hover:bg-red-500 active:bg-red-700 text-white font-bold text-base sm:text-lg py-4 px-6 rounded-2xl shadow-lg shadow-red-600/30 transition-all active:scale-[0.98] cursor-pointer">
+                        <span>Contratar Imediatamente</span>
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                    
+                    <p class="text-center text-xs text-slate-400 mt-4 font-medium flex items-center justify-center gap-1.5">
+                        <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        Ambiente de pagamento 100% seguro
+                    </p>
+
                 </div>
-                <!-- Feature 2 -->
-                <div class="flex items-start p-4 rounded-2xl bg-white/5 border border-white/10 shadow-sm backdrop-blur-sm">
-                    <div class="flex-shrink-0 mt-0.5">
-                        <div class="w-9 h-9 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400 border border-red-500/20">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                        </div>
-                    </div>
-                    <div class="ml-3.5">
-                        <h3 class="text-white font-bold text-base">Assessoria</h3>
-                        <p class="mt-0.5 text-slate-400 text-xs sm:text-sm">Envie pedidos no sistema e receba atualizações realizadas.</p>
-                    </div>
-                </div>
-                <!-- Feature 3 -->
-                <div class="flex items-start p-4 rounded-2xl bg-white/5 border border-white/10 shadow-sm backdrop-blur-sm">
-                    <div class="flex-shrink-0 mt-0.5">
-                        <div class="w-9 h-9 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400 border border-red-500/20">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-                        </div>
-                    </div>
-                    <div class="ml-3.5">
-                        <h3 class="text-white font-bold text-base">Anúncios</h3>
-                        <p class="mt-0.5 text-slate-400 text-xs sm:text-sm">Imagens e Vídeos focadas em atrair clientes.</p>
-                    </div>
-                </div>
-                <!-- Feature 4 -->
-                <div class="flex items-start p-4 rounded-2xl bg-white/5 border border-white/10 shadow-sm backdrop-blur-sm">
-                    <div class="flex-shrink-0 mt-0.5">
-                        <div class="w-9 h-9 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400 border border-red-500/20">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636l3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                        </div>
-                    </div>
-                    <div class="ml-3.5">
-                        <h3 class="text-white font-bold text-base">Atualizações Mensais</h3>
-                        <p class="mt-0.5 text-slate-400 text-xs sm:text-sm">Conteúdo Sempre Atualizado.</p>
-                    </div>
-                </div>
-                <!-- Feature 5 -->
-                <div class="flex items-start p-4 rounded-2xl bg-white/5 border border-white/10 shadow-sm backdrop-blur-sm">
-                    <div class="flex-shrink-0 mt-0.5">
-                        <div class="w-9 h-9 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400 border border-red-500/20">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636l3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                        </div>
-                    </div>
-                    <div class="ml-3.5">
-                        <h3 class="text-white font-bold text-base">Suporte Dedicado</h3>
-                        <p class="mt-0.5 text-slate-400 text-xs sm:text-sm">Atendimento ágil.</p>
-                    </div>
-                </div>
+
             </div>
         </div>
 
-        <!-- Right Column: Pricing Card (Invertido - Agora Claro) -->
-        <div class="w-full lg:w-5/12 max-w-md mx-auto">
-            
-            <div class="relative bg-white rounded-[2.5rem] p-6 sm:p-8 shadow-2xl border border-red-500/40 text-slate-900 transform transition-all duration-300 hover:shadow-red-500/20">
-                
-                <!-- Glowing red accent edge -->
-                <div class="absolute inset-x-0 -top-px h-1 w-full bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-t-[2.5rem]"></div>
-
-                <div class="flex justify-between items-center mb-6">
-                    <div>
-                        <h2 class="text-xl sm:text-2xl font-bold tracking-tight">Plano Completo</h2>
-                        <p class="text-slate-500 text-xs sm:text-sm mt-0.5">Tudo o que sua empresa exige.</p>
-                    </div>
-                    <div class="bg-red-50 border border-red-200 text-red-600 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider">
-                        Oferta Especial
-                    </div>
-                </div>
-
-                <!-- Price Box -->
-                <div class="mb-6 pb-6 border-b border-slate-200 flex items-baseline">
-                    <span class="text-2xl sm:text-3xl font-semibold text-slate-500 mr-1.5">R$</span>
-                    <span class="text-5xl sm:text-6xl font-black tracking-tighter text-slate-900">180</span>
-                    <span class="text-lg sm:text-xl text-slate-500 font-medium ml-2">/mês</span>
-                </div>
-
-                <!-- Checklist -->
-                <ul class="space-y-3.5 mb-8 text-sm sm:text-base">
-                    <li class="flex items-center text-slate-700">
-                        <div class="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center mr-3 flex-shrink-0 border border-red-200">
-                            <svg class="w-3.5 h-3.5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
-                        Site Profissional pronto em 7 dias
-                    </li>
-                    <li class="flex items-center text-slate-700">
-                        <div class="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center mr-3 flex-shrink-0 border border-red-200">
-                            <svg class="w-3.5 h-3.5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
-                        Assessoria Mensal
-                    </li>
-                    <li class="flex items-center text-slate-700">
-                        <div class="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center mr-3 flex-shrink-0 border border-red-200">
-                            <svg class="w-3.5 h-3.5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
-                        Anúncios
-                    </li>
-                      <li class="flex items-center text-slate-700">
-                        <div class="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center mr-3 flex-shrink-0 border border-red-200">
-                            <svg class="w-3.5 h-3.5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
-                        Atualizações
-                    </li>
-                      <li class="flex items-center text-slate-700">
-                        <div class="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center mr-3 flex-shrink-0 border border-red-200">
-                            <svg class="w-3.5 h-3.5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
-                        Suporte Dedicado
-                    </li>
-                    <li class="flex items-center text-slate-700">
-                        <div class="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center mr-3 flex-shrink-0 border border-red-200">
-                            <svg class="w-3.5 h-3.5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
-                       Sem taxas escondidas / sem contrato de fidelidade
-                    </li>
-                </ul>
-
-                <!-- CTA Button -->
-                <button onclick="handleCheckout()" class="group relative w-full flex items-center justify-center gap-3 bg-red-600 hover:bg-red-500 active:bg-red-700 text-white font-bold text-base sm:text-lg py-4 px-6 rounded-2xl shadow-lg shadow-red-600/30 transition-all active:scale-[0.98] cursor-pointer">
-                    <span>Contratar Imediatamente</span>
-                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </button>
-                
-                <p class="text-center text-xs text-slate-400 mt-4 font-medium flex items-center justify-center gap-1.5">
-                    <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                    Ambiente de pagamento 100% seguro
-                </p>
-
+        <!-- Imagens Adicionais Section -->
+        <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+            <!-- Imagem 1 -->
+            <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10 transform transition-all duration-300 hover:scale-[1.02]">
+                <img 
+                    src="https://newwilld.github.io/l2UFP/criacao-de-sites-profissionais-em-aracaju%201.webp" 
+                    alt="Projeto de Site Profissional 1" 
+                    class="w-full h-64 sm:h-80 object-cover"
+                    loading="lazy"
+                >
             </div>
-
+            <!-- Imagem 2 -->
+            <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10 transform transition-all duration-300 hover:scale-[1.02]">
+                <img 
+                    src="https://newwilld.github.io/l2UFP/criacao-de-sites-profissionais-em-aracaju%202.webp" 
+                    alt="Projeto de Site Profissional 2" 
+                    class="w-full h-64 sm:h-80 object-cover"
+                    loading="lazy"
+                >
+            </div>
         </div>
 
     </main>
